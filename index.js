@@ -57,7 +57,7 @@ function playRound(playerSelection, computerSelection) {
             }
             break;
         default:
-            alert('wrong choice')
+            alert('wrong chce')
             break;
     }
 }
