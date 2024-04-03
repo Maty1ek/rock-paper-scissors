@@ -4,56 +4,174 @@
 // Outputs we have: The choice of computer, The winner of round, The count of winnings and loses, The final winner
 
 
-let array = [
-    'Rock',
-    'Scissors',
-    'Paper'
-]
+// let array = [
+//     'Rock',
+//     'Scissors',
+//     'Paper'
+// ]
+
+
+
+
+
+// function playRound(playerSelection, computerSelection) {
+//     playerSelection = playerSelection.toLowerCase()
+//     computerSelection = computerSelection.toLowerCase()
+//     switch(playerSelection) {
+//         case computerSelection:
+//             alert('draw')
+//             break;
+//         case 'rock':
+//             if(computerSelection == 'scissors') {
+//                 playerCount++
+//                 alert(text(computerSelection, playerSelection, 'won'))
+//             } else if(computerSelection == 'paper') {
+//                 computerCount++
+//                 alert(text(computerSelection, playerSelection, 'lose'))
+//             }
+//             break;
+//         case 'scissors':
+//             if(computerSelection == 'paper') {
+//                 playerCount++
+//                 alert(text(computerSelection, playerSelection, 'won'))
+//             } else if(computerSelection == 'rock') {
+//                 computerCount++
+//                 alert(text(computerSelection, playerSelection, 'lose'))
+//             }
+//             break;
+//         case 'paper':
+//             if(computerSelection == 'rock') {
+//                 playerCount++
+//                 alert(text(computerSelection, playerSelection, 'won'))
+//             } else if(computerSelection == 'scissors') {
+//                 computerCount++
+//                 alert(text(computerSelection, playerSelection, 'lose'))
+//             }
+//             break;
+//         default:
+//             alert('wrong choice')
+//             break;
+//     }
+// }
+
+
+
+// playGame(10)
+
+const playBtn = document.getElementById("play_btn")
+const firstPage = document.getElementById("firstPage")
+const mainPage = document.getElementById('mainPage')
+const lastPage = document.getElementById('lastPage')
+
+const userSelections = document.querySelectorAll('.userSelections')
+const userChoices = Array.from(userSelections)
+
+const userChoiceIMG = document.getElementById('user_choice_img')
+const compChoiceIMG = document.getElementById('comp_choice_img')
+
+const roundRes = document.getElementById('round_res')
+const compScore = document.getElementById('compScore')
+const userScore = document.getElementById('userScore')
+const userScoreLast = document.getElementById('userScoreLast')
+const compScoreLast = document.getElementById('compScoreLast')
+
+const finalRes = document.getElementById('finish_res')
+
+let gameRound = 5
 
 let count = 0
 let computerCount = 0
 let playerCount = 0
-let text = (compSel,playSel,result) => {
-    return `Computer choice: ${compSel}, Player choice: ${playSel}, you ${result}, score: ${computerCount} / ${playerCount}`
+let text = (result) => {
+    roundRes.innerHTML = result
 }
+
+let input = 'none'
+
+let compChoice
+
+let array = [
+    'rock',
+    'scissors',
+    'paper'
+]
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
     return array[choice]
 }
 
+for (let i = 0; i < userChoices.length; i++) {
+    userChoices[i].addEventListener('click', () => ye(i))
+}
+
+function ye(i) {
+    input = userChoices[i].id
+    compChoice = getComputerChoice()
+    userChoiceIMG.src = `img/${userChoices[i].id}.png`
+    compChoiceIMG.src = `img/${compChoice}.png`
+    playRound(input, compChoice)
+    console.log(compChoice, computerCount, playerCount);
+    compScore.innerHTML = computerCount
+    userScore.innerHTML = playerCount
+    if(input === compChoice) {
+        count
+    } else {
+        count++
+    }
+    if (count == gameRound) {
+        mainPage.setAttribute('style', 'display:none !important;')
+        lastPage.setAttribute('style', 'display:flex !important;')
+        count = 0
+        if (playerCount > computerCount) {
+            finalRes.innerHTML = "YOU WON!"
+        } else if (playerCount == computerCount) {
+            finalRes.innerHTML = "DRAW"
+        } else {
+            finalRes.innerHTML = "YOU LOST!"
+        }
+        roundRes.innerHTML = ''
+        userScoreLast.innerHTML = playerCount
+        compScoreLast.innerHTML = computerCount
+        computerCount = 0
+        playerCount = 0
+        compScore.innerHTML = computerCount
+        userScore.innerHTML = playerCount
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
-    switch(playerSelection) {
+    switch (playerSelection) {
         case computerSelection:
-            alert('draw')
+            roundRes.innerHTML = 'draw'
             break;
         case 'rock':
-            if(computerSelection == 'scissors') {
+            if (computerSelection == 'scissors') {
                 playerCount++
-                alert(text(computerSelection, playerSelection, 'won'))
-            } else if(computerSelection == 'paper') {
+                roundRes.innerHTML = 'won'
+            } else if (computerSelection == 'paper') {
                 computerCount++
-                alert(text(computerSelection, playerSelection, 'lose'))
+                roundRes.innerHTML = 'lost'
             }
             break;
         case 'scissors':
-            if(computerSelection == 'paper') {
+            if (computerSelection == 'paper') {
                 playerCount++
-                alert(text(computerSelection, playerSelection, 'won'))
-            } else if(computerSelection == 'rock') {
+                roundRes.innerHTML = 'won'
+            } else if (computerSelection == 'rock') {
                 computerCount++
-                alert(text(computerSelection, playerSelection, 'lose'))
+                roundRes.innerHTML = 'lost'
             }
             break;
         case 'paper':
-            if(computerSelection == 'rock') {
+            if (computerSelection == 'rock') {
                 playerCount++
-                alert(text(computerSelection, playerSelection, 'won'))
-            } else if(computerSelection == 'scissors') {
+                roundRes.innerHTML = 'won'
+            } else if (computerSelection == 'scissors') {
                 computerCount++
-                alert(text(computerSelection, playerSelection, 'lose'))
+                roundRes.innerHTML = 'lost'
             }
             break;
         default:
@@ -62,18 +180,16 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function playGame(n) {
-    for(let i = 0; i <= n; i++) {
-        let input = prompt('Enter your choice: ')
-        playRound(input, getComputerChoice())
-    }
-    if(playerCount > computerCount) {
-        alert('YOU ARE WINNER!!')
-    } else if(playerCount < computerCount) {
-        alert('YOU ARE FCKIN LOOSER!!')
-    } else {
-        alert('TIE!!')
-    }
+function closePage() {
+    mainPage.setAttribute('style', 'display:flex !important;')
+    firstPage.style.display = 'none'
+    console.log('yes')
 }
 
-playGame(10)
+const playAgain = () => {
+    lastPage.style.display = 'none'
+    mainPage.setAttribute('style', 'display:flex !important;')
+}
+
+playBtn.addEventListener('click', closePage)
+play_btn_last.addEventListener('click', playAgain)
