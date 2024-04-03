@@ -1,12 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/all.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lunasima:wght@400;700&display=swap');
+    </style>
     <title>Document</title>
 </head>
+
 <body>
-    
+    <div class="con">
+        <div id="firstPage" class="firstPage">
+            <div class="fstCon">
+                <h1 class="game_name">
+                    ROCK PAPER <br> AND <br> SCISSORS
+                </h1>
+                <button id="play_btn" class="play_btn">
+                    PLAY
+                </button>
+            </div>
+        </div>
+        <div id="mainPage" class="mainPage" >
+            <div class="main_con">
+                <div class="score">
+                    <div class="scrTitles">
+                        <div class="scrP">
+                            <p>You</p>
+                            <img class="selection_img" id="user_choice_img" src="" alt="">
+                        </div>
+                        
+                        <h1 class="score_title">Total Score:</h1>
+
+                        <div class="scrP">
+                            <p>Computer</p>
+                            <img class="selection_img" id="comp_choice_img" src="computer_choice_img" alt="">
+                        </div>
+                    </div>
+
+                    <div class="score_squares">
+                        <div id="userScore" class="scrSquare"></div>
+                        <span>:</span>
+                        <div id="compScore" class="scrSquare"></div>
+                    </div>
+                </div>
+
+                <div class="choise">
+                    <p id="round_res"></p>
+                </div>
+                
+                <div class="rps">
+                    <div class="rps-img">
+                        <img id="rock" class="userSelections" src="img/rock.png" alt="">
+                    </div>
+                    <div class="rps-img">
+                        <img id="paper" class="userSelections" src="img/paper.png" alt="">
+                    </div>
+                    <div class="rps-img">
+                        <img id="scissors" class="userSelections" src="img/scissors.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="lastPage" class="lastPage">
+            <p id="finish_res" class="lastRes"></p>
+            <div class="score">
+                <h2 class="lastScore">Score:</h2>
+                <div class="score_squares lastScore">
+                    <div id="userScoreLast" class="scrSquare"></div>
+                    <span>:</span>
+                    <div id="compScoreLast" class="scrSquare"></div>
+                </div>
+
+            </div>
+            <button id="play_btn_last" class="play_btn">
+                PLAY AGAIN
+            </button>
+        </div>
+    </div>
     <script src="index.js"></script>
 </body>
+
 </html>
