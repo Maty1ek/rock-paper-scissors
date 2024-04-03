@@ -1,0 +1,54 @@
+.con {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to left bottom, #ff9398, #f398bf, #d7a4dc, #b3b1ea, #94bbe9);
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lunasima";
+}
+
+.firstPage {
+    /* display: none !important; */
+    width: 360px;
+    height: 400px;
+    background-color: #fdf4fd;
+    margin-top: -20px;
+    border-radius: 35px;
+    border: 1px solid #c8bbc8d6;
+    box-shadow: 0px 7px 0px -1px #d6cdd6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fstCon {
+    text-align: center;
+    margin-top: -10px;
+    font-family: "Lunasima";
+    font-weight: 400;
+}
+
+.game_name {
+    margin-bottom: 70px;
+    line-height: 30px;
+    color: #534953;
+    font-size: 28px;
+}
+
+.play_btn {
+    background-color: #e63946;
+    color: #fff;
+    font-size: 20px;
+    padding: 12px 35px;
+    border-radius: 15px;
+    box-shadow: 0 3px 0 #c42b38;
+    border: 1px solid #9f2731;
+    transition: 0.08s;
+}
+
+.play_btn:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}

@@ -1,0 +1,31 @@
+.lastPage {
+    width: 800px;
+    height: 400px;
+    background-color: #fdf4fd;
+    margin-top: -20px;
+    border-radius: 35px;
+    border: 1px solid #c8bbc8d6;
+    box-shadow: 0px 7px 0px -1px #d6cdd6;
+    display: flex;
+    padding-block: 50px; 
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+.lastScore {
+    position: relative;
+    top: 0;
+}
+
+.lastRes {
+    margin: 0 !important;
+}
+
+.lastScore {
+    font-size: 30px;
+    /* font-weight: 700; */
+    margin-bottom: 20px;
+}
